@@ -1,15 +1,18 @@
 from flask import Flask, jsonify, request
-import os
+from PIL import Image
+import base64,io,os
 
-#from app.classifier import classify
+from flask_rest_api.app.classifier import classify
 #from app.cloud_sql import sql
 
 app = Flask(__name__)
 
 @app.route("/classifier", methods=['POST'])
 def get_classification():
-    #classify image using the model#
-    result = '#classification#'
+    img_b64 = request.form.get('user_image')
+    img = base64.b64decode(img_b64)
+    img = Image.open(io.BytesIO(img))
+    result = str(classify(img))
     return jsonify({'data' : result})
 
 @app.route("/species", methods=['GET'])
