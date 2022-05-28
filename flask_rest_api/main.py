@@ -2,7 +2,7 @@ from flask import Flask, jsonify, request
 from PIL import Image
 import base64,io,os
 
-from flask_rest_api.app.classifier import classify
+from app.classifier import classify
 #from app.cloud_sql import sql
 
 app = Flask(__name__)
