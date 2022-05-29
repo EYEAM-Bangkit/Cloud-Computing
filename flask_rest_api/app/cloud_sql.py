@@ -3,7 +3,7 @@ import mysql.connector
 
 # establishing the connection
 conn = mysql.connector.connect(
-    host = "34.101.110.162",       # e.g. '172.0.0.1'
+    host = "10.39.0.3",       # e.g. '172.0.0.1'
     user = "root",            # e.g. 'user'
     password = "caca",        # e.g. 'password'
     database = "hewankudb"    # e.g. 'mydatabase'
