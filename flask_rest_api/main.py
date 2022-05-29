@@ -3,7 +3,7 @@ from PIL import Image
 import base64,io,os
 
 from app.classifier import classify
-#from app.cloud_sql import sql
+from app.cloud_sql import cloud_sql
 
 app = Flask(__name__)
 
@@ -21,7 +21,7 @@ def get_species_info():
     if len(args) != 1:
         return jsonify({'data':'invalid input'})
     #access cloud sql and fetch species information#
-    result = '#species info'
+    result = getSpeciesData(args['name'])
     return jsonify({'data' : result})
 
 if __name__ == '__main__':
