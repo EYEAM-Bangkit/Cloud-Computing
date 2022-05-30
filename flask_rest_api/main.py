@@ -3,7 +3,7 @@ from PIL import Image
 import base64,io,os
 
 from utils.classifier import classify
-from utils.cloud_sql import cloud_sql
+from utils.cloud_sql import getSpeciesData
 
 app = Flask(__name__)
 
