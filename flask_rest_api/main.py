@@ -2,8 +2,8 @@ from flask import Flask, jsonify, request
 from PIL import Image
 import base64,io,os
 
-from app.classifier import classify
-from app.cloud_sql import cloud_sql
+from utils.classifier import classify
+from utils.cloud_sql import cloud_sql
 
 app = Flask(__name__)
 
