@@ -7,4 +7,3 @@ numpy==1.22.3
 protobuf==3.20.1
 mysql==0.0.3
 mysql-connector==2.2.9
-mysqlclient==2.1.0
