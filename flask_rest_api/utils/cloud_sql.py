@@ -25,6 +25,6 @@ def getSpeciesData(name):
         # Just change the column using "where"
         result = cursor.fetchone() 
         # Result index 2 must be a null foto
-        return json.dumps(result)
+        return result
 
 print(getSpeciesData('nama2'))
