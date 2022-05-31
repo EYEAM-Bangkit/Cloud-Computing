@@ -1,5 +1,4 @@
 #cloud sql code#
-import json
 import pymysql
 import pymysql.cursors
 
