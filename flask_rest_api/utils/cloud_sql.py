@@ -21,7 +21,7 @@ else:
 
 # Fetching the data
 def getSpeciesData(name):
-        cursor.execute(f"SELECT * FROM hewankusayang WHERE namapopuler = %s", name)
+        cursor.execute("SELECT * FROM hewankusayang WHERE namapopuler = %s", name)
         # Just change the column using "where"
         result = cursor.fetchone() 
         # Result index 2 must be a null foto
