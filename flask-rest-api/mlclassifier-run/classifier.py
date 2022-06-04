@@ -2,7 +2,7 @@ from keras.models import load_model
 from keras.preprocessing import image
 from numpy import expand_dims, vstack, argmax
 
-model = load_model("./models/model_1.h5")
+model = load_model("./model/model_1.h5")
 
 # classifier code and stuffs
 def classify(data):
