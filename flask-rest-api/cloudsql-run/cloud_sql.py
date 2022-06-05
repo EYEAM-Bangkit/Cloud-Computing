@@ -4,7 +4,7 @@ import pymysql.cursors
 
 # establishing the connection
 def connect_db():
-    connection = pymysql.connect(host='34.101.110.162', user='root', password='caca', database='hewankudb', cursorclass = pymysql.cursors.DictCursor)
+    connection = pymysql.connect(host='10.39.0.3', user='root', password='caca', database='hewankudb', cursorclass = pymysql.cursors.DictCursor)
     return connection
 
 # Fetching the data
