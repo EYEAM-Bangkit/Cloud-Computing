@@ -3,27 +3,18 @@ import pymysql
 import pymysql.cursors
 
 # establishing the connection
-connection = pymysql.connect(
-    host='10.39.0.3',
-    user='root',
-    password='caca',
-    database='hewankudb',
-    cursorclass = pymysql.cursors.DictCursor)
-
-cursor = connection.cursor()
-
-# check the connection
-if connection:
-    print("Connected Successfully")
-else:
-    print("Connection Not Established")
+def connect_db():
+    connection = pymysql.connect(host='34.101.110.162', user='root', password='caca', database='hewankudb', cursorclass = pymysql.cursors.DictCursor)
+    return connection
 
 # Fetching the data
 def getSpeciesData(name):
-        cursor.execute("SELECT * FROM hewankusayang WHERE namapopuler = %s", name)
-        # Just change the column using "where"
-        result = cursor.fetchone() 
-        # Result index 2 must be a null foto
-        return result
+    connection = connect_db()
+    cursor = connection.cursor()
+    # Just change the column using "where"
+    cursor.execute('SELECT * FROM hewankusayang WHERE namailmiah = %s', name)
+    result = cursor.fetchone()
+    connection.close()
+    return result
 
-print(getSpeciesData('nama2'))
+print(getSpeciesData('alami'))
