@@ -41,48 +41,38 @@ definitions:
     description: Species details object fetched from cloud sql
     type: object
     properties:
-      namapopuler:
-        type: string
       namailmiah:
         type: string
-      foto:
-        type: string
-      taxonomy:
-        type: string
-      kingdom:
-        type: string
-      genus:
-        type: string
-      class:
-        type: string
-      ordo:
-        type: string
-      family:
-        type: string
-      species:
-        type: string
-      deskripsi:
-        type: string
-      persebaran:
-        type: string
-      habitat:
+      namapopuler:
         type: string
       iucn:
         type: string
-      threats:
+      deskripsi:
         type: string
+      foto:
+        type: string
+      habitat:
+        type: string
+      populasi:
+        typeLL string
       conserv:
         type: string
-      tersedia:
+      persebaran:
         type: string
-      rataumur:
-        type: number
-      ratapanjang:
-        type: number
-      ratalebar:
-        type: number
-      rataberat:
-        type: number
+      threats:
+        type: string
+      kingdom:
+        type: string
+      phylum:
+        type: string
+      class:
+        type: string
+      order:
+        type: string
+      family:
+        type: string
+      genus:
+        type: string 
 securityDefinitions:
   firebase:
     flow: implicit
