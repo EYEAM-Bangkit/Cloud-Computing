@@ -54,7 +54,7 @@ definitions:
       habitat:
         type: string
       populasi:
-        typeLL string
+        type: string
       conserv:
         type: string
       persebaran:
