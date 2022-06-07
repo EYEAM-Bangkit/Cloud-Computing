@@ -13,8 +13,8 @@ def getSpeciesData(name):
     cursor = connection.cursor()
     # Just change the column using "where"
     cursor.execute(f"SELECT * FROM hewankusayang WHERE namapopuler LIKE '%{name}%' OR namailmiah LIKE '%{name}%'")
-    result = cursor.fetchone()
+    result = cursor.fetchall()
     connection.close()
     return result
 
-print(getSpeciesData('felis'))
+print(getSpeciesData('lemur'))
