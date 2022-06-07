@@ -13,6 +13,6 @@ def classify(data):
 
     classi = argmax(model.predict(images, batch_size=10), axis=-1)[0]
 
-    labels = {0: 'Binturong', 1: 'Koala', 2: 'Lemur', 3: 'Tarsier', 4:'Walrus'}
+    labels = {0: 'arctictis binturong', 1: 'Phascolarctos cinereus', 2: 'Eulemur sanfordi', 3: 'Tarsius tumpara', 4:'Odobenus rosmarus'}
     result = labels[classi]
     return result
