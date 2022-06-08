@@ -27,8 +27,9 @@ def get_classification():
     result = str(classify(img))
     
     header = request.headers
-    userid = header['X-Apigateway-Api-Userinfo']['user_id']
-
+    header = header['X-Apigateway-Api-Userinfo']
+    userid = header['user_id']
+    
     publish_msg(userid, result)
     
     return jsonify({'animalName' : result})
