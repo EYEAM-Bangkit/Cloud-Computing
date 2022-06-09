@@ -1,4 +1,4 @@
-import pymysql
+import pymysql, base64
 
 def connect_db():
     connection = pymysql.connect(
@@ -29,3 +29,8 @@ def getUserLogs(user_id):
     result = cursor.fetchall()
     connection.close()
     return result
+
+# url safe solution to decode base64 to fix padding issues
+def decode_base64(data):
+    data += '=' * (len(data) % 4)
+    return base64.urlsafe_b64decode(data)

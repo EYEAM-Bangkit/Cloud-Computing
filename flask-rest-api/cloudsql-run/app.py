@@ -1,17 +1,20 @@
-from flask import Flask, jsonify, request
+from flask import Flask, jsonify, json, request
 import os
 
-from cloud_sql import getSpeciesData, getUserLogs
+from cloud_sql import getSpeciesData, getUserLogs, decode_base64
 
 app = Flask(__name__)
 
 @app.route("/animal/<name>", methods=['GET'])
-def get_species_info(name):
+def get_animal_info(name):
     result = getSpeciesData(name)
     return jsonify({'data' : result})
 
-@app.route("/logs/<user_id>", methods=['GET'])
-def get_species_info(user_id):
+@app.route("/logs/", methods=['GET'])
+def get_user_log(user_id):
+    header = request.headers.get('X-Apigateway-Api-Userinfo')
+    header = decode_base64(header)
+    header = json.loads(header)
     result = getUserLogs(user_id)
     return jsonify({'data' : result})
 
