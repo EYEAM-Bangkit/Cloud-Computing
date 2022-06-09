@@ -33,7 +33,7 @@ def get_classification():
     
     header = request.headers.get('X-Apigateway-Api-Userinfo')
     header = decode_base64(header)
-    header = json.loads()
+    header = json.loads(header)
 
     userid = header['user_id']
 
