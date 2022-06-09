@@ -14,11 +14,8 @@ def get_animal_info(name):
 def get_user_log():
     header = request.headers.get('X-Apigateway-Api-Userinfo')
     header = decode_base64(header)
-    print(header)
     header = json.loads(header)
-    print(header)
     result = getUserLogs(header['user_id'])
-    print(result)
 
     return jsonify({'data' : result})
 

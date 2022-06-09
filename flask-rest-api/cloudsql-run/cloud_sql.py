@@ -24,7 +24,7 @@ def getUserLogs(user_id):
     connection = connect_db()
     cursor = connection.cursor()
 
-    cursor.execute(f"SELECT * FROM logs WHERE userid={user_id}")
+    cursor.execute(f"SELECT * FROM logs WHERE userid='{user_id}'")
 
     result = cursor.fetchall()
     connection.close()
