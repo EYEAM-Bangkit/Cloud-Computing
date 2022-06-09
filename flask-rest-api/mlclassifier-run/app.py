@@ -19,6 +19,11 @@ def publish_msg(userid, animal):
 
     return True
 
+# url safe solution to decode base64 to fix padding issues
+def decode_base64(data):
+    data += '=' * (len(data) % 4)
+    return base64.urlsafe_b64decode(data)
+
 @app.route("/classifier", methods=['POST'])
 def get_classification():
     img_b64 = request.form.get('user_image')
@@ -27,11 +32,8 @@ def get_classification():
     result = str(classify(img))
     
     header = request.headers.get('X-Apigateway-Api-Userinfo')
-    print(header)
-    header = base64.b64decode(header)
-    print(header)
+    header = decode_base64(header)
     header = json.loads()
-    print(header)
 
     userid = header['user_id']
 
