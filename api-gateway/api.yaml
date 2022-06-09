@@ -16,18 +16,40 @@ paths:
       description: Returns animal name classified by ml model from provided image in x-form
       operationId: get_classification
       summary: Get animal name from ml classification
-  /species:
+  /animal:
     get:
       x-google-backend:
-        address: https://cloudsql-m4asy2ifmq-uc.a.run.app/species
+        address: https://cloudsql-m4asy2ifmq-uc.a.run.app/animal
       responses:
         "200":
           schema:
-            $ref: '#/definitions/speciesDetails'
+            $ref: '#/definitions/animalDetails'
+          description: Successful response
+      description: Returns animalk details from mysql database based on animalk name.
+      operationId: get_animal_info
+      summary: Get animalk details cloud sql
+  /logs:
+    get:
+      x-google-backend:
+        address: https://cloudsql-m4asy2ifmq-uc.a.run.app/logs
+      responses:
+        "200":
+          schema:
+            $ref: '#/definitions/animalDetails'
+          description: Successful response
+      description: Returns animalk details from mysql database based on animalk name.
+      operationId: get_user_log
+      summary: Get animalk details cloud sql
+  /test:
+    get:
+      x-google-backend:
+        address: https://us-central1-glossy-chimera-350206.cloudfunctions.net/function-1
+      responses:
+        "200":
           description: Successful response
       description: Returns species details from mysql database based on species name.
-      operationId: get_species_info
-      summary: Get species details cloud sql
+      operationId: test
+      summary: Get species details cloud sqlasdf qwe 
 definitions:
   animalname:
     title: Animal Name
@@ -36,8 +58,8 @@ definitions:
     properties:
       animalName:
         type: string     
-  speciesDetails:
-    title: Root Type for speciesDetails
+  animalDetails:
+    title: Root Type for animalDetails
     description: Species details object fetched from cloud sql
     type: object
     properties:

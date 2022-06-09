@@ -19,7 +19,7 @@ gcloud run deploy --image=gcr.io/glossy-chimera-350206/mlclassifier:1.0.0 \
 --platform managed \
 --max-instances=1 \
 --allow-unauthenticated \
---memory=4Gi
+--memory=8Gi
 
 #// Setup Pub Sub and Cloud Function with pub/sub trigger
 gcloud pubsub topics create eyeam-loguser-topic
