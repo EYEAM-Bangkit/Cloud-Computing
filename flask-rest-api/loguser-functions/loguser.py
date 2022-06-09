@@ -24,14 +24,15 @@ def loguser(event, context):
     animal  = msg['animal']
     logtime = get_time_now()
 
+    print(f"eventid {eventid}, userid {userid}, animal {animal}, logtime {logtime}")
+
     conn   = connect_db()
     cursor = conn.cursor()
 
-    sql ="""INSERT INTO logs values (
+    sql ="""INSERT INTO user values (
             %s, %s, %s, %s)
          """
          
     cursor.execute(sql,(eventid,userid,animal,logtime))
     conn.commit()
     conn.close()
-    
