@@ -27,7 +27,7 @@ def loguser(event, context):
     conn   = connect_db()
     cursor = conn.cursor()
 
-    sql ="""INSERT INTO user values (
+    sql ="""INSERT INTO logs values (
             %s, %s, %s, %s)
          """
          
