@@ -27,7 +27,12 @@ def get_classification():
     result = str(classify(img))
     
     header = request.headers.get('X-Apigateway-Api-Userinfo')
-    header = json.loads(base64.b64decode(header))
+    print(header)
+    header = base64.b64decode(header)
+    print(header)
+    header = json.loads()
+    print(header)
+
     userid = header['user_id']
 
     publish_msg(userid, result)
