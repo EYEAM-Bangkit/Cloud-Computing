@@ -1,4 +1,4 @@
-from flask import Flask, jsonify, request
+from flask import Flask, jsonify, json, request
 from google.cloud import pubsub_v1
 from PIL import Image
 import base64,io,os
@@ -27,6 +27,7 @@ def get_classification():
     result = str(classify(img))
     
     header = request.headers.get('X-Apigateway-Api-Userinfo')
+    header = json.loads(base64.b64decode(header))
     userid = header['user_id']
 
     publish_msg(userid, result)
@@ -35,3 +36,4 @@ def get_classification():
 
 if __name__ == '__main__':
     app.run(debug=True, host="0.0.0.0", port=int(os.environ.get("PORT", 8080)))
+'{"userid": "ffxiv",  "animal": "koala"}'
