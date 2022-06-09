@@ -1,17 +1,18 @@
 from flask import Flask, jsonify, request
 import os
 
-from cloud_sql import getSpeciesData
+from cloud_sql import getSpeciesData, getUserLogs
 
 app = Flask(__name__)
 
-@app.route("/species", methods=['GET'])
-def get_species_info():
-    args = request.args
-    if len(args) != 1:
-        return jsonify({'data':'invalid input'})
-    #access cloud sql and fetch species information#
-    result = getSpeciesData(args['name'])
+@app.route("/animal/<name>", methods=['GET'])
+def get_species_info(name):
+    result = getSpeciesData(name)
+    return jsonify({'data' : result})
+
+@app.route("/logs/<user_id>", methods=['GET'])
+def get_species_info(user_id):
+    result = getUserLogs(user_id)
     return jsonify({'data' : result})
 
 if __name__ == '__main__':
