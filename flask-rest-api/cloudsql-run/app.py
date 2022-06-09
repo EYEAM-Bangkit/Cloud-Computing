@@ -6,7 +6,7 @@ from cloud_sql import getSpeciesData, getUserLogs, decode_base64
 app = Flask(__name__)
 
 @app.route("/animal", methods=['GET'])
-def get_animal_info(name):
+def get_animal_info():
     args = request.args
     args = args.to_dict()
     result = getSpeciesData(args.get('name'))
