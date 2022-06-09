@@ -15,7 +15,7 @@ def get_user_log():
     header = request.headers.get('X-Apigateway-Api-Userinfo')
     header = decode_base64(header)
     header = json.loads(header)
-    result = getUserLogs(user_id)
+    result = getUserLogs(header['user_id'])
     return jsonify({'data' : result})
 
 if __name__ == '__main__':
