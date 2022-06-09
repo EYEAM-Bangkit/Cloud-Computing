@@ -10,8 +10,8 @@ def get_animal_info(name):
     result = getSpeciesData(name)
     return jsonify({'data' : result})
 
-@app.route("/logs/", methods=['GET'])
-def get_user_log(user_id):
+@app.route("/logs", methods=['GET'])
+def get_user_log():
     header = request.headers.get('X-Apigateway-Api-Userinfo')
     header = decode_base64(header)
     header = json.loads(header)
