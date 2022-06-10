@@ -1,11 +1,12 @@
 import pymysql, base64
+from config import *
 
 def connect_db():
     connection = pymysql.connect(
-        host='10.39.1.3', 
-        user='root', 
-        password='caca', 
-        database='hewankudb', 
+        host     = sql_host, 
+        user     = sql_user, 
+        password = sql_password, 
+        database = sql_database, 
         cursorclass = pymysql.cursors.DictCursor
     )
     return connection
@@ -14,7 +15,7 @@ def getSpeciesData(name):
     connection = connect_db()
     cursor = connection.cursor()
 
-    cursor.execute(f"SELECT * FROM hewankusayang WHERE namapopuler LIKE '%{name}%' OR namailmiah LIKE '%{name}%'")
+    cursor.execute(f"SELECT * FROM animal WHERE namapopuler LIKE '%{name}%' OR namailmiah LIKE '%{name}%'")
 
     result = cursor.fetchall()
     connection.close()
