@@ -3,14 +3,13 @@ from google.cloud import pubsub_v1
 from PIL import Image
 import base64,io,os
 
+from config import *
 from classifier import classify
 
 app = Flask(__name__)
 
 def publish_msg(userid, animal):
     publisher = pubsub_v1.PublisherClient()
-    project_id = "glossy-chimera-350206"
-    topic_id = "eyeam-loguser-topic"
     topic_path = publisher.topic_path(project_id, topic_id)
 
     data_str = '{"userid":"%s", "animal":"%s"}' % (userid, animal)
@@ -37,10 +36,10 @@ def get_classification():
 
     userid = header['user_id']
 
-    publish_msg(userid, result)
+    # logs user access to database
+    publish_msg(userid, result) 
     
     return jsonify({'animalName' : result})
 
 if __name__ == '__main__':
     app.run(debug=True, host="0.0.0.0", port=int(os.environ.get("PORT", 8080)))
-'{"userid": "ffxiv",  "animal": "koala"}'
