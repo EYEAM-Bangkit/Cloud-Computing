@@ -58,20 +58,3 @@ ALTER TABLE `logs`
   ADD PRIMARY KEY (`eventid`);
 COMMIT;
 ```
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-a
