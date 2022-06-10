@@ -3,15 +3,14 @@
 Developed by Ilham Hanifan and Iqbal Khariza
 
 ## Retrieve JWT Auth Token
----
 Returns Authentication Token for users to access other endpoints
 
-URL : /https://www.googleapis.com/identitytoolkit/v3/relyingparty/verifyPassword?key=[API-KEY]
-Method : GET
-Auth Required : No
-Parameters : `key : API-KEY`
-Body : `{ "email":"EMAIL", "password":"PASSWORD", "returnSecureToken":true }`
-Response : 
+- URL : /https://www.googleapis.com/identitytoolkit/v3/relyingparty/verifyPassword?key=[API-KEY]
+- Method : GET
+- Auth Required : No
+- Parameters : `key : API-KEY`
+- Body : `{ "email":"EMAIL", "password":"PASSWORD", "returnSecureToken":true }`
+- Response : 
 ```
 {
     "kind": "identitytoolkit#VerifyPasswordResponse",
@@ -26,22 +25,19 @@ Response :
 ```
 note : idToken is used as Bearer Token to access other endpoints
 
-
-
 ## Authentication Test
 Returns JWT Token, only used for testing purposes.
 
-URL: /test
-Method : GET
-Auth Required : Yes, Bearer Token
-Parameters : `key : API-KEY`
-Body : JSON `{ "email":"EMAIL", "password":"PASSWORD", "returnSecureToken":true }`
-
-Output : 
+- URL: /test
+- Method : GET
+- Auth Required : Yes, Bearer Token
+- Parameters : `key : API-KEY`
+- Body : JSON `{ "email":"EMAIL", "password":"PASSWORD", "returnSecureToken":true }`
+- Response : 
 ```
 ewogICJpc3MiOiAiaHR0cHM6Ly9zZWN1cmV0b2tlbi5nb29nbGUuY29tL1tQUk9KRUNULUlEXSIsCiAgImF1ZCI6ICJbUFJPSkVDVC1JRF0iLAogICJhdXRoX3RpbWUiOiAxNjU0ODI4MTQ5LAogICJ1c2VyX2lkIjogImRsUmQuLi5xa3kxIiwKICAic3ViIjogImRsUi4uLmt5MSIsCiAgImlhdCI6IDE2Li4uNDksCiAgImV4cCI6IDE2Li4uNDksCiAgImVtYWlsIjogIm1haWxAbWFpbC5jb20iLAogICJlbWFpbF92ZXJpZmllZCI6IGZhbHNlLAogICJmaXJlYmFzZSI6IHsKICAgICJpZGVudGl0aWVzIjogewogICAgICAiZW1haWwiOiBbCiAgICAgICAgIltVU0VSLUVNQUlMXSIKICAgICAgXQogICAgfSwKICAgICJzaWduX2luX3Byb3ZpZGVyIjogInBhc3N3b3JkIgogIH0KfQ
 ```
-The output is a base64 encoded string
+The Reponse is a base64 encoded string
 ```
 {
   "iss": "https://securetoken.google.com/[PROJECT-ID]",
@@ -64,30 +60,26 @@ The output is a base64 encoded string
 }
 ```
 
-
 ## POST Classificaiton JWT
 API will identify what kind of animal is in the picture and gives back the scientific name of the animal. 
 It will also logs what it identifies to the database.
 
-URL: /classifier
-Method : POST
-Auth Required : Yes, Bearer Token
-Parameters : None
-Body : form-data `user_image`:`[BASE64-ENCODED-IMAGE]`
-
-Output : JSON `{ "animalName": "Phascolarctos cinereus" }`
-
+- URL: /classifier
+- Method : POST
+- Auth Required : Yes, Bearer Token
+- Parameters : None
+- Body : form-data `user_image`:`[BASE64-ENCODED-IMAGE]`
+- Response : JSON `{ "animalName": "Phascolarctos cinereus" }`
 
 ## GET Animal JWT
 Retrieve Information abou a specific animal
 
-URL: /animal
-Method : GET
-Auth Required : Yes, Bearer Token
-Parameters : `name : [ANIMAL-NAME]`
-Body : None
-
-Output : JSON 
+- URL: /animal
+- Method : GET
+- Auth Required : Yes, Bearer Token
+- Parameters : `name : [ANIMAL-NAME]`
+- Body : None
+- Response : JSON 
 ```
 {
     "data": [
@@ -116,13 +108,12 @@ Output : JSON
 ## GET Logs JWT
 Retrieve user log based on the provided authorization token
 
-URL: /logs
-Method : GET
-Auth Required : Yes, Bearer Token
-Parameters : None
-Body : None
-
-Output : JSON 
+- URL: /logs
+- Method : GET
+- Auth Required : Yes, Bearer Token
+- Parameters : None
+- Body : None
+- Response : JSON 
 ```
 {
     "data": [
