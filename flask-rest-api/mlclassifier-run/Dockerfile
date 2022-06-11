@@ -7,8 +7,8 @@ WORKDIR $APP_HOME
 COPY . ./
 
 RUN pip install --no-cache-dir -r requirements.txt
-RUN curl -sSL https://sdk.cloud.google.com | bash
-RUN gsutil cp gs://BUCKET_NAME/path/to/file ./model/model_1.h5
+RUN gsutil cp 'gs://eyeam-model/model_1_inceptionv3 (2022_06_05-02-54-20-PM).h5' ./model/model_1.h5
 
 EXPOSE 4000
+
 CMD gunicorn -b 0.0.0.0:8080 --workers 1 --threads 8 --timeout 0 app:app
