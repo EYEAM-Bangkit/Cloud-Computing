@@ -6,3 +6,4 @@ pillow==9.1.1
 numpy==1.22.3
 protobuf==3.20.1
 google-cloud-pubsub==2.13.0
+gsutil==5.10
