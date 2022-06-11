@@ -1,3 +1,5 @@
+# Function dependencies, for example:
+# package>=version
 pymysql
 datetime
 pytz
