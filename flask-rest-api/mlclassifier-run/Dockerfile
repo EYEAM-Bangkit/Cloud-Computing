@@ -7,7 +7,7 @@ WORKDIR $APP_HOME
 COPY . ./
 
 RUN pip install --no-cache-dir -r requirements.txt
-RUN gsutil cp 'gs://eyeam-model/model_1_inceptionv3 (2022_06_05-02-54-20-PM).h5' ./model/model_1.h5
+RUN gsutil -m cp 'gs://eyeam-model/model_1_inceptionv3 (2022_06_05-02-54-20-PM).h5' ./model/model_1.h5
 
 EXPOSE 4000
 
