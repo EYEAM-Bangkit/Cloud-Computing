@@ -14,6 +14,7 @@ def classify(data):
 
     classi = argmax(model.predict(images, batch_size=10), axis=-1)[0]
 
-    labels = {0: 'arctictis binturong', 1: 'Phascolarctos cinereus', 2: 'Eulemur sanfordi', 3: 'Tarsius tumpara', 4:'Odobenus rosmarus'}
+    labels = {0: 'arctictis binturong', 1: 'Phascolarctos cinereus', 2: 'Lemur Catta', 3: 'Eulemur sanfordi', 4: 'Tarsius tumpara', 5:'Odobenus rosmarus'}
+
     result = labels[classi]
     return result
