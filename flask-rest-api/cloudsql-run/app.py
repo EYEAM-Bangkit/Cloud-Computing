@@ -7,13 +7,17 @@ app = Flask(__name__)
 
 @app.route("/animal", methods=['GET'])
 def get_animal_info():
-    args = request.args
-    args = args.to_dict()
-    result = getSpeciesData(args.get('name'))
+    if 'name' not in request.args:
+        return jsonify({'data' : 'no [name] in parameter found'})
+
+    result = getSpeciesData(request.args.get('name'))
     return jsonify({'data' : result})
 
 @app.route("/logs", methods=['GET'])
 def get_user_log():
+    if 'X-Apigateway-Api-Userinfo' not in request.headers:
+        return jsonify({'data' : 'no [X-Apigateway-Api-Userinfo] header found'})
+        
     header = request.headers.get('X-Apigateway-Api-Userinfo')
     header = decode_base64(header)
     header = json.loads(header)
