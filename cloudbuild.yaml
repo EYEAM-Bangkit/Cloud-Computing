@@ -34,7 +34,7 @@ steps:
       - --image=gcr.io/$PROJECT_ID/cloudsql:$SHORT_SHA
       - --region=asia-southeast2
       - --set-env-vars=_SQL_HOST=$_SQL_HOST,_SQL_USER=$_SQL_USER,_SQL_PASSWORD=$_SQL_PASSWORD,_SQL_DATABASE=$_SQL_DATABASE
-      - --platform managed
+      - --platform=managed
       - --max-instances=1
       - --allow-unauthenticated
       - --vpc-connector=cloudsql-connector
@@ -60,7 +60,7 @@ steps:
       - --image=gcr.io/$PROJECT_ID/mlclassifier:$SHORT_SHA
       - --region=asia-southeast2
       - --set-env-vars=_PROJECT_ID=$_PROJECT_ID,_TOPIC_ID=$_TOPIC_ID
-      - --platform managed 
+      - --platform=managed 
       - --min-instances=1
       - --max-instances=1
       - --no-cpu-throttling
