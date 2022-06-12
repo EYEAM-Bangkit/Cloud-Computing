@@ -12,6 +12,7 @@ steps:
     - --runtime=python39
     - --entry-point=loguser
     - --set-env-vars=_SQL_HOST=$_SQL_HOST,_SQL_USER=$_SQL_USER,_SQL_PASSWORD=$_SQL_PASSWORD,_SQL_DATABASE=$_SQL_DATABASE
+    - --vpc-connector=cloudsql-connector
   # cloudsql - Build
   - name: gcr.io/cloud-builders/docker
     args:
@@ -30,39 +31,42 @@ steps:
       - run
       - deploy
       - cloudsql
-      - '--image'
-      - 'gcr.io/$PROJECT_ID/cloudsql:$SHORT_SHA'
-      - '--region'
-      - 'asia-southeast2'
-      - '--set-env-vars'
-      - '_SQL_HOST=$_SQL_HOST,_SQL_USER=$_SQL_USER,_SQL_PASSWORD=$_SQL_PASSWORD,_SQL_DATABASE=$_SQL_DATABASE'
-      - '--allow-unauthenticated'
+      - --image=gcr.io/$PROJECT_ID/cloudsql:$SHORT_SHA
+      - --region=asia-southeast2
+      - --set-env-vars=_SQL_HOST=$_SQL_HOST,_SQL_USER=$_SQL_USER,_SQL_PASSWORD=$_SQL_PASSWORD,_SQL_DATABASE=$_SQL_DATABASE
+      - --platform managed
+      - --max-instances=1
+      - --allow-unauthenticated
+      - --vpc-connector=cloudsql-connector
     entrypoint: gcloud
-  # mlclassifier - Build
+  # MLCLASSIFIER - Build
   - name: gcr.io/cloud-builders/docker
     args:
       - build
       - '-t'
       - 'gcr.io/$PROJECT_ID/mlclassifier:$SHORT_SHA'
       - ./flask-rest-api/mlclassifier-run/
-  # mlclassifier - Push
+  # MLCLASSIFIER - Push
   - name: gcr.io/cloud-builders/docker
     args:
       - push
       - 'gcr.io/$PROJECT_ID/mlclassifier:$SHORT_SHA'
-  # cloudsql - Deploy
+  # MLCLASSIFIER - Deploy
   - name: gcr.io/google.com/cloudsdktool/cloud-sdk
     args:
       - run
       - deploy
       - mlclassifier
-      - '--image'
-      - 'gcr.io/$PROJECT_ID/mlclassifier:$SHORT_SHA'
-      - '--region'
-      - 'asia-southeast2'
-      - '--set-env-vars'
-      - '_PROJECT_ID=$_PROJECT_ID,_TOPIC_ID=$_TOPIC_ID'
-      - '--allow-unauthenticated'
+      - --image=gcr.io/$PROJECT_ID/mlclassifier:$SHORT_SHA
+      - --region=asia-southeast2
+      - --set-env-vars=_PROJECT_ID=$_PROJECT_ID,_TOPIC_ID=$_TOPIC_ID
+      - --platform managed 
+      - --min-instances=1
+      - --max-instances=1
+      - --no-cpu-throttling
+      - --allow-unauthenticated
+      - --memory=8Gi
+      - --cpu=2
     entrypoint: gcloud
 images:
   - 'gcr.io/$PROJECT_ID/cloudsql:$SHORT_SHA'
