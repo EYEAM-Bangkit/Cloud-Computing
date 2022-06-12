@@ -66,4 +66,4 @@ images:
   - 'gcr.io/$PROJECT_ID/cloudsql:$SHORT_SHA'
 options:
   logging: NONE
-timeout: 3600s
+timeout: 3601s
