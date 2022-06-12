@@ -1,55 +1,45 @@
 swagger: "2.0"
 info:
-  title: EYEAM Rest API
+  title: EYEAM API
   description: API to provide services for EYEAM Mobile App
   version: 1.0.0
 paths:
   /classifier:
     post:
       x-google-backend:
-        address: https://mlclassifier-m4asy2ifmq-uc.a.run.app/classifier
+        address: https://mlclassifier-t7jrwidujq-et.a.run.app/classifier
       responses:
         "200":
           schema:
             $ref: '#/definitions/animalName'
           description: Successful response
-      description: Returns animal name classified by ml model from provided image in x-form
+      description: API will identify what kind of animal is in the picture and gives back the scientific name of the animal. It will also logs what it identifies to the database.
       operationId: get_classification
-      summary: Get animal name from ml classification
+      summary: Get animal name from ml classification and logs it to cloud sql
   /animal:
     get:
       x-google-backend:
-        address: https://cloudsql-m4asy2ifmq-uc.a.run.app/animal
+        address: https://cloudsql-t7jrwidujq-et.a.run.app/animal
       responses:
         "200":
           schema:
             $ref: '#/definitions/animalDetails'
           description: Successful response
-      description: Returns animalk details from mysql database based on animalk name.
+      description: Retrieve Information about a specific animal from the cloud sql instance
       operationId: get_animal_info
-      summary: Get animalk details cloud sql
+      summary: Get animal data from database
   /logs:
     get:
       x-google-backend:
-        address: https://cloudsql-m4asy2ifmq-uc.a.run.app/logs
+        address: https://cloudsql-t7jrwidujq-et.a.run.app/logs
       responses:
         "200":
           schema:
-            $ref: '#/definitions/animalDetails'
+            $ref: '#/definitions/log'
           description: Successful response
-      description: Returns animalk details from mysql database based on animalk name.
+      description: Returns logs from cloudsql based on userid.
       operationId: get_user_log
-      summary: Get animalk details cloud sql
-  /test:
-    get:
-      x-google-backend:
-        address: https://us-central1-glossy-chimera-350206.cloudfunctions.net/function-1
-      responses:
-        "200":
-          description: Successful response
-      description: Returns species details from mysql database based on species name.
-      operationId: test
-      summary: Get species details cloud sqlasdf qwe 
+      summary: Get user logs
 definitions:
   animalname:
     title: Animal Name
@@ -95,14 +85,21 @@ definitions:
         type: string
       genus:
         type: string 
+  log:
+    title: User logs
+    description: logs about a specific user's interaction with the classifier
+    type: object
+    properties:
+      data:
+        type: object  
 securityDefinitions:
   firebase:
     flow: implicit
     authorizationUrl: ''
     scopes: {}
     type: oauth2
-    x-google-issuer: "https://securetoken.google.com/glossy-chimera-350206"
+    x-google-issuer: "https://securetoken.google.com/[PROJECT-ID]"
     x-google-jwks_uri: "https://www.googleapis.com/service_accounts/v1/metadata/x509/securetoken@system.gserviceaccount.com"
-    x-google-audiences: "glossy-chimera-350206"
+    x-google-audiences: "[PROJECT-ID]"
 security:
   - firebase: []

@@ -25,6 +25,11 @@ def decode_base64(data):
 
 @app.route("/classifier", methods=['POST'])
 def get_classification():
+    if request.form['user_image'] is None:
+        return jsonify({'animalName' : 'no [user_image] in x-form'})
+    if 'X-Apigateway-Api-Userinfo' not in request.headers:
+        return jsonify({'animalName' : 'no [X-Apigateway-Api-Userinfo] header found'})
+
     img_b64 = request.form.get('user_image')
     img = base64.b64decode(img_b64)
     img = Image.open(io.BytesIO(img))
