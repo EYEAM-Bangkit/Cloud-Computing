@@ -18,7 +18,7 @@ We built a CI/CD pipeline using Google Cloud Platform Services listed below:
 
 ## Serverless Architecture
 
-![cicdepipeline.svg](./images/serverless_arch.png)
+![cicdepipeline.svg](./images/serverless_arch1.png)
 
 We use built a serverless architecture using services listed below:
 - API Gateway = Manage endpoints and provide authentication for users
