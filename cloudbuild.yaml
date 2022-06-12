@@ -36,6 +36,7 @@ steps:
       - 'asia-southeast2'
       - '--set-env-vars'
       - '_SQL_HOST=$_SQL_HOST,_SQL_USER=$_SQL_USER,_SQL_PASSWORD=$_SQL_PASSWORD,_SQL_DATABASE=$_SQL_DATABASE'
+      - '--allow-unauthenticated'
     entrypoint: gcloud
   # mlclassifier - Build
   - name: gcr.io/cloud-builders/docker
@@ -61,9 +62,10 @@ steps:
       - 'asia-southeast2'
       - '--set-env-vars'
       - '_PROJECT_ID=$_PROJECT_ID,_TOPIC_ID=$_TOPIC_ID'
+      - '--allow-unauthenticated'
     entrypoint: gcloud
 images:
   - 'gcr.io/$PROJECT_ID/cloudsql:$SHORT_SHA'
 options:
   logging: NONE
-timeout: 3601s
+timeout: 3600s
