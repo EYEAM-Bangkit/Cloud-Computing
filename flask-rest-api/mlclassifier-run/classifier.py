@@ -9,6 +9,7 @@ def classify(data):
     img = data.resize((300,300))
     x = image.img_to_array(img)
     x = expand_dims(x, axis=0)
+    x = x/255
     images = vstack([x])
 
     classi = argmax(model.predict(images, batch_size=10), axis=-1)[0]
