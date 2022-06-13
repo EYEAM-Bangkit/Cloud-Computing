@@ -2,6 +2,8 @@
 
 Developed by Ilham Hanifan and Iqbal Khariza
 
+We use firebase auth for our auth system then apply it to our API Gateway. Before making a request to our endpoints please fetch the Bearer token first from the provided link and attach it to the Authorization header every time a request is made.
+
 ## Retrieve JWT Auth Token
 Returns Authentication Token for users to access other endpoints
 
