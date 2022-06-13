@@ -40,6 +40,11 @@ We built a CI/CD pipeline using Google Cloud Platform Services listed below:
 - Github Repository = Source code repository
 
 ## What's on our Cloud Console
+## Cloudbuild Trigger - Substitution Variables
+![CloudBuild_Trigger_Substitution_Variables.jpg](./images/CloudBuild_Trigger_Substitution_Variables.jpg)
+
+We put secrets for our code inside CloudBuild Substitution Variables. With this we can safely host our code in this repository while keeping important variables private.
+
 ### Cloud Run 
 ![CloudRun_Console.jpg](./images/CloudRun_Console.jpg)
 ### Cloud Storage
