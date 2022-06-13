@@ -9,6 +9,10 @@ A Repository for Cloud Computing part of EYEAM-Bangkit Project
   <img src="./images/services-used.png">
 </p>
 
+### Project Brief Cloud Computing
+
+Creating serverless microservice architecture for the backend using Cloud Run, Cloud Functions, and Cloud Pub Sub. API gateway is used to route user requests to the correct service. Creating CI/CD Pipeline on Github Repository using Cloud Build Triggers on push to the main branch. Cloud SQL and Cloud Storage is used for storing important data.
+
 ## Serverless Architecture
 <p align="center">
   <img src="./images/serverless_arch1.png">
@@ -23,7 +27,7 @@ We use built a serverless architecture using services listed below:
 - Cloud SQL = Stores animal details and user logs
 - Cloud Storage = Stores animal images, models, and .APK
 
-## Continuous Deployment
+## Continuous Integration & Continous Integration
 <p align="center">
   <img src="./images/cicdepipeline.png">
 </p> 
@@ -34,3 +38,13 @@ We built a CI/CD pipeline using Google Cloud Platform Services listed below:
 - Cloud Build = Building, Push, and deploying images from git repository using `cloudbuild.yaml` script
 - Container Registry = Stores newly generated container images from cloud build
 - Github Repository = Source code repository
+
+## What's on our Cloud Console
+### Cloud Run 
+![CloudRun_Console.jpg](./images/CloudRun_Console.jpg)
+### Cloud Storage
+![CloudStorage_Console.jpg](./images/CloudStorage_Console.jpg)
+### Pub Sub Topics
+![Pubsub_Topics.jpg](./images/Pubsub_Topics.jpg)
+
+
