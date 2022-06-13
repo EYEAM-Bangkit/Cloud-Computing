@@ -5,10 +5,10 @@ Developed by Ilham Hanifan and Iqbal Khariza
 ## Retrieve JWT Auth Token
 Returns Authentication Token for users to access other endpoints
 
-- URL : /https://www.googleapis.com/identitytoolkit/v3/relyingparty/verifyPassword?key=[API-KEY]
+- URL : /https://www.googleapis.com/identitytoolkit/v3/relyingparty/verifyPassword?key=[FIREBASE-WEB-API-KEY]
 - Method : GET
 - Auth Required : No
-- Parameters : `key : API-KEY`
+- Parameters : `key : FIREBASE-WEB-API-KEY`
 - Body : `{ "email":"EMAIL", "password":"PASSWORD", "returnSecureToken":true }`
 - Response : 
 ```
